@@ -290,3 +290,34 @@ canvas {
   margin-top: 80px;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
 }
+
+.trash {
+  user-select: none;
+  position: relative;
+  right: -100%;
+  top: 160px;
+}
+
+.trash_icon {
+  background-image: url("/images/trash.png");
+  background-size: 100%;
+  width: 60px;
+  height: 60px;
+  position: relative;
+  left: -80px;
+  background-color: white;
+  border-radius: 15px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(177, 177, 177);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+.trash_icon:hover {
+  opacity: 88%;
+}
+
+.trash_icon:active {
+  opacity: 75%;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5) inset;
+}

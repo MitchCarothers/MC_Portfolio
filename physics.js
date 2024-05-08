@@ -31,8 +31,10 @@ let mouse = Mouse.create(render.canvas);
 const mouseParams = {
     mouse: mouse,
     constraint: {
-      stiffness: 0.05,
-      damping: .8,
+      stiffness: 0.1,
+      angularStiffness: .5,
+      angularDamping: 1,
+      damping: 1,
       length: 0,
       render: {
         visible: false,
@@ -141,6 +143,13 @@ for (button in skillButtons) {
         addBody(event);
     });
 }
+
+// tool buttons
+let trashButton = document.getElementById("trash");
+trashButton.addEventListener("click", () => {
+    Composite.clear(engine.world, true);
+    Composite.add(engine.world, mouseConstraint);
+});
 
 // world boundaries
 let winHeight = render.options.height;
