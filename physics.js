@@ -1,3 +1,5 @@
+"use-strict";
+
 let Engine = Matter.Engine,
     Render = Matter.Render,
     Runner = Matter.Runner,
@@ -22,9 +24,10 @@ let render = Render.create({
         width: winWidth,
         height: 600,
         wireframes: false, // disable Wireframe
-        background: "url('images/grid2.png')"
+        background: "url('images/grid2.png')",
       }
 });
+render.canvas.setAttribute("id", "physCanvas")
 
 // mouse interactivity
 let mouse = Mouse.create(render.canvas);
