@@ -31,32 +31,39 @@ function resumeButtons() {
     }
 
     function resumeModal () {
-        let modal = newModal();
-        let modalContent = modal.modalContent;
-        let modalBase = modal.modalBase;
-        let resume = newElement("div", "resume", modalContent);
+        let modalObj = newModal();
+        let modal = modalObj.modal;
+        let modalContent = modalObj.modalContent;
+        let modalBase = modalObj.modalBase;
+        let container = newElement("div", "frame_container", modalContent)
+        let iframe = newElement("iframe", "frame", container);
+        iframe.setAttribute("src", "./resume.html");
+    //    let resume = newElement("div", "resume", modalContent);
 
         // Download Button Setup
-        let downloadContainer = newElement("div", "page_button_container", modalContent);
-        let downloadBtn = newElement("button", "page_button", downloadContainer);
-        newTextNode("Download", downloadBtn);
-        downloadContainer.style.width = "auto";
-        downloadContainer.style.margin = "20px 0";
-        downloadBtn.setAttribute("onClick", 
-        "window.open('/downloadable/Resume - Mitchell Carothers.pdf')");
+    //    let downloadBtn = newElement("div", "resume_download", modal);
+    //    downloadBtn.setAttribute("onClick", 
+    //    "window.open('/downloadable/Resume - Mitchell Carothers.pdf')");
 
         // I found this more simple and effective than media queries
         // Performance is likely slightly worse though
-        let scaling = .8;
-        function setHeight () {
-            resume.style.height = `${(window.innerWidth * scaling)}px`;
-        }
-        setHeight();
-        window.addEventListener("resize", setHeight);
-        modalBase.addEventListener("modalRemoved", () => {
-            window.removeEventListener("resize", setHeight);
-        })
+    //    let scaling = .8;
+    //    function setHeight () {
+    //        resume.style.height = `${(window.innerWidth * scaling)}px`;
+    //    }
+    //    setHeight();
+    //    window.addEventListener("resize", setHeight);
+    //    modalBase.addEventListener("modalRemoved", () => {
+    //        window.removeEventListener("resize", setHeight);
+    //    })
     }
+
+    //function resumeModal () {
+    //    const modalContainer = document.getElementById("modal_container");
+    //    let container = newElement("div", "modal_frame_container", modalContainer)
+    //    let iframe = newElement("iframe", "modal_frame", container);
+    //    iframe.setAttribute("src", "./resume.html");
+    //}
 }
 
 function canvas() {
