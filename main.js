@@ -1,11 +1,24 @@
 "use strict";
-
 import { newModal } from "./modules/modal.js";
 import { newNotification } from "./modules/notification.js"
+import { newElement, newTextNode } from "./modules/elementAssembly.js"
 
 profileImage();
+resumeButtons();
 setTimeout(canvas, 100);
-resumeButtons()
+
+function profileImage () {
+    const profile_note = document.getElementById("profile_note");
+    const profile_image = document.getElementById("profile_image");
+
+    profile_image.addEventListener("mouseenter", () => {
+        profile_note.style.opacity = "100%";
+    })
+
+    profile_image.addEventListener("mouseleave", () => {
+        profile_note.style.opacity = "0%";
+    })
+}
 
 function resumeButtons() {
     let buttons = [
@@ -21,13 +34,20 @@ function resumeButtons() {
         let modal = newModal();
         let modalContent = modal.modalContent;
         let modalBase = modal.modalBase;
-        let resume = document.createElement("div");
-        resume.setAttribute("class", "resume");
-        modalContent.appendChild(resume);
-        
+        let resume = newElement("div", "resume", modalContent);
+
+        // Download Button Setup
+        let downloadContainer = newElement("div", "page_button_container", modalContent);
+        let downloadBtn = newElement("button", "page_button", downloadContainer);
+        newTextNode("Download", downloadBtn);
+        downloadContainer.style.width = "auto";
+        downloadContainer.style.margin = "20px 0";
+        downloadBtn.setAttribute("onClick", 
+        "window.open('/downloadable/Resume - Mitchell Carothers.pdf')");
+
         // I found this more simple and effective than media queries
         // Performance is likely slightly worse though
-        let scaling = .95;
+        let scaling = .8;
         function setHeight () {
             resume.style.height = `${(window.innerWidth * scaling)}px`;
         }
@@ -37,19 +57,6 @@ function resumeButtons() {
             window.removeEventListener("resize", setHeight);
         })
     }
-}
-
-function profileImage () {
-    const profile_note = document.getElementById("profile_note");
-    const profile_image = document.getElementById("profile_image");
-
-    profile_image.addEventListener("mouseenter", () => {
-        profile_note.style.opacity = "100%";
-    })
-
-    profile_image.addEventListener("mouseleave", () => {
-        profile_note.style.opacity = "0%";
-    })
 }
 
 function canvas() {

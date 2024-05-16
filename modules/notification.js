@@ -1,26 +1,23 @@
+"use strict";
+import { newElement, newTextNode } from "./elementAssembly.js";
+
+const container = document.getElementById("notif_container");
+
 export function newNotification (text) {
-    const container = document.getElementById("notif_container");
-    let notif = document.createElement("div");
-    notif.setAttribute("class", "notif");
-    notif.setAttribute("id", "notif");
+    let notif = newElement("div", "notif", container)
+    newTextNode(text, notif);
     notif.style.opacity = 0;
-    container.appendChild(notif);
-    notif.appendChild(document.createTextNode(text));
-
-    let notif_close = document.createElement("div");
-    notif_close.setAttribute("class", "notif_close");
-    notif_close.setAttribute("id", "notif_close");
-    notif.appendChild(notif_close);
-
+    newElement("div", "notif_close", notif)
     setTimeout(() => {notif.style.opacity = "100%";}, 1)
-    initNotification(notif)
+    
+    notifWhenClose(notif)
     setTimeout(() => {decayNotification(notif)}, 8000);
 }
 
-function initNotification (notif) {
-    const notif_close = notif
+function notifWhenClose (notif) {
+    const notifClose = notif
 
-    notif_close.addEventListener("click", () => {
+    notifClose.addEventListener("click", () => {
         decayNotification(notif, .15);
     });
 }
