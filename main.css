@@ -7,13 +7,18 @@
 }
 
 body {
+  user-select: none;
+  -webkit-user-select: none;
   margin: 0;
   background: var(--primary_gradient);
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-color: black;
 }
 
 .nav_primary {
+  user-select: none;
+  -webkit-user-select: none;
   display: flex;
   align-items: center;
   height: 80px;
@@ -28,6 +33,7 @@ body {
 
 .nav_comp_title {
   user-select: none;
+  -webkit-user-select: none;
   color: rgb(46, 46, 46);
   font-family: Roboto;
   font-weight: 300;
@@ -45,6 +51,8 @@ body {
 }
 
 .nav_comp_buttons_container {
+  user-select: none;
+  -webkit-user-select: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,6 +61,7 @@ body {
 
 .nav_comp_button {
   user-select: none;
+  -webkit-user-select: none;
   color: rgb(114, 114, 114);
   background-color: white;
   font-family: Roboto;
@@ -84,12 +93,17 @@ body {
 }
 
 main {
+  user-select: none;
+  -webkit-user-select: none;
   display: flex;
   padding: 70px;
   padding-top: 100px;
+  gap: 30px;
 }
 
 .info_section {
+  user-select: none;
+  -webkit-user-select: none;
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -125,13 +139,18 @@ p {
 }
 
 .profile_image_container {
+  user-select: none;
+  -webkit-user-select: none;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 440px;
+  position: relative;
 }
 
 .profile_image {
+  user-select: none;
+  -webkit-user-select: none;
   background-image: url(images/mc2.jpg);
   height: 400px;
   width: 400px;
@@ -139,27 +158,32 @@ p {
   border-radius: 100%;
   background-position: -30px -115px;
   transition: height .3s, width .3s, background-size .3s, background-position .3s;
-  margin-left: 100px;
 }
 
 .profile_image:hover {
-  height: 440px;
-  width: 440px;
+  height: 425px;
+  width: 425px;
   background-size: 110%;
   background-position: -40px -130px;
 }
 
 .profile_note {
+  user-select: none;
+  -webkit-user-select: none;
   background-image: url(images/me.png);
   height: 100px;
   width: 100px;
   background-size: 100%;
-  margin-bottom: 100px;
   opacity: 0%;
   transition: opacity .3s;
+  position: absolute;
+  top: 100px;
+  right: 20px;
 }
 
 .main_content_container {
+  user-select: none;
+  -webkit-user-select: none;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -171,14 +195,16 @@ p {
 
 .main_right {
   flex: 0.4;
+  min-width: 430px;
 }
 
 .page_button {
+  user-select: none;
+  -webkit-user-select: none;
   background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(247,247,247,1) 50%, rgba(198,198,198,1) 100%);
   font-family: Roboto;
   font-weight: 300;
   font-size: 18px;
-  user-select: none;
   color: rgb(65, 65, 65);
   padding: 10px;
   padding-left: 30px;
@@ -193,6 +219,8 @@ p {
 }
 
 .page_button_container {
+  user-select: none;
+  -webkit-user-select: none;
   height: 80px; 
   width: 240px; 
   display: flex; 
@@ -220,6 +248,8 @@ p {
 }
 
 .matrix_container {
+  user-select: none;
+  -webkit-user-select: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -230,6 +260,7 @@ p {
 
 .matrix_cell {
   user-select: none;
+  -webkit-user-select: none;
   padding: 20px;
   font-family: Roboto;
   font-weight: 300;
@@ -241,7 +272,7 @@ p {
   border-left-style: solid;
   border-color: rgb(177, 177, 177);
   text-align: center;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
   transition: width .2s, box-shadow .2s;
 }
 
@@ -283,34 +314,38 @@ p {
 }
 
 canvas {
+  user-select: none;
+  -webkit-user-select: none;
   border-style: solid;
   border-color: rgb(177, 177, 177);
-  border-radius: 15px;
+  border-radius: 25px;
   border-width: 1px;
   margin-top: 80px;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.25);
 }
 
-.trash {
+.physics_container {
   user-select: none;
+  -webkit-user-select: none;
   position: relative;
-  right: -100%;
-  top: 160px;
 }
 
 .trash_icon {
+  user-select: none;
+  -webkit-user-select: none;
   background-image: url("/images/trash.png");
   background-size: 100%;
   width: 60px;
   height: 60px;
-  position: relative;
-  left: -80px;
   background-color: white;
   border-radius: 15px;
   border-width: 1px;
   border-style: solid;
   border-color: rgb(177, 177, 177);
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 99px;
+  right: 20px;
 }
 
 .trash_icon:hover {
@@ -320,4 +355,33 @@ canvas {
 .trash_icon:active {
   opacity: 75%;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.5) inset;
+}
+
+.selectable {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+.modal_container {
+  position: relative;
+}
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  background-color: black;
+  border-radius: 30px;
+  opacity: 60%;
+  left: -380px;
+  top: 140px;
+  padding: 5px;
+  height: 80px;
+  color: white;
+  font-family: Roboto;
+  font-weight: 300;
+  font-size: 15px;
+  text-align: center;
+  z-index: 1000;
 }

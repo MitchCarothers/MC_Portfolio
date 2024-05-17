@@ -10,16 +10,15 @@ let Engine = Matter.Engine,
 let engine = Engine.create();
 
 function determineWindowWidth() {
-    let targetWidth = window.innerWidth / 2;
-    return (targetWidth <= 1000) ? targetWidth : 1000;
+    let targetWidth = window.innerWidth / 1.85;
+    return (targetWidth >= 500) ? targetWidth : 500;
 }
-let winWidth = determineWindowWidth();
 
 let render = Render.create({
     element: document.getElementById("physics"),
     engine: engine,
     options: {
-        width: winWidth,
+        width: determineWindowWidth(),
         height: 600,
         wireframes: false, // disable Wireframe
         background: "url('images/grid2.png')"
@@ -31,10 +30,10 @@ let mouse = Mouse.create(render.canvas);
 const mouseParams = {
     mouse: mouse,
     constraint: {
-      stiffness: 0.1,
+      stiffness: 0.02,
       angularStiffness: .5,
       angularDamping: 1,
-      damping: 1,
+      damping: .1,
       length: 0,
       render: {
         visible: false,
@@ -42,12 +41,17 @@ const mouseParams = {
     }
 };
 let mouseConstraint = MouseConstraint.create(engine, mouseParams);
+Composite.add(engine.world, mouseConstraint);
 
 // disable the mouse constraint when mouse leaves the canvas :)
 render.canvas.addEventListener("mouseleave", () => {
     const event = new Event("mouseup");
     mouseConstraint.mouse.element.dispatchEvent(event);
 });
+
+// allow user to scroll over the canvas
+mouseConstraint.mouse.element.removeEventListener("mousewheel", mouseConstraint.mouse.mousewheel);
+mouseConstraint.mouse.element.removeEventListener("DOMMouseScroll", mouseConstraint.mouse.mousewheel);
 
 // object spawning system
 function getRandomInt(min, max) {
@@ -57,6 +61,7 @@ function getRandomInt(min, max) {
 };
 
 function spawnPos () {
+    let winWidth = determineWindowWidth();
     return getRandomInt((winWidth / 8), (winWidth - (winWidth / 8)));
 };
 
@@ -154,13 +159,24 @@ trashButton.addEventListener("click", () => {
 // world boundaries
 let winHeight = render.options.height;
 let boundary = 60;
-// This looks confusing because it is, but at its core, this is just a way to dynamically adjust the boundaries
-let ground = Bodies.rectangle((winWidth / 2), (winHeight + (boundary / 2)), winWidth, boundary, { isStatic: true }),
+let ground, leftWall, rightWall, ceiling;
+let setBoundaries = function setBoundaries() {
+    let winWidth = determineWindowWidth();
+    ground = Bodies.rectangle((winWidth / 2), (winHeight + (boundary / 2)), winWidth, boundary, { isStatic: true }),
     leftWall = Bodies.rectangle(-(boundary / 2), (winHeight / 2), boundary, winHeight, { isStatic: true }),
     rightWall = Bodies.rectangle((winWidth + (boundary / 2)), (winHeight / 2), boundary, winHeight, { isStatic: true }),
     ceiling = Bodies.rectangle((winWidth / 2), -(boundary / 2), winWidth, boundary, { isStatic: true });
 
-Composite.add(engine.world, [ mouseConstraint, ground, leftWall, rightWall, ceiling ]);
+    Composite.add(engine.world, [ground, leftWall, rightWall, ceiling]);
+}
+setBoundaries();
+
+// dynamic canvas sizing
+window.addEventListener("resize", () => {
+    render.canvas.width = determineWindowWidth();
+    Composite.remove(engine.world, [ground, leftWall, rightWall, ceiling]);
+    setBoundaries()
+});
 
 // run the renderer, create runner, then run the engine (matter js shenanigans)
 Render.run(render);
