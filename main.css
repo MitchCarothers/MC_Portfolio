@@ -6,6 +6,12 @@
   --matrix_border_radius: 15px;
 }
 
+* {
+  user-select: none;
+  -webkit-user-select: none;
+  font-family: Roboto, Arial;
+}
+
 body {
   user-select: none;
   -webkit-user-select: none;
@@ -16,6 +22,7 @@ body {
   background-color: black;
 }
 
+/* Nav Bar Styles */
 .nav_primary {
   user-select: none;
   -webkit-user-select: none;
@@ -28,17 +35,12 @@ body {
   position: fixed;
   right: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 100;
 }
 
-.nav_comp_title {
-  user-select: none;
-  -webkit-user-select: none;
+.nav_title {
   color: rgb(46, 46, 46);
-  font-family: Roboto;
-  font-weight: 300;
-  font-size: 26px;
-  text-align: center;
+  font: 300 26px Roboto;
   transition: letter-spacing .3s;
   letter-spacing: 2px;
   width: 340px;
@@ -46,59 +48,199 @@ body {
   margin-left: 50px;
 }
 
-.nav_comp_title:hover {
+.nav_title:hover {
   letter-spacing: 5px;
 }
 
-.nav_comp_buttons_container {
-  user-select: none;
-  -webkit-user-select: none;
+.nav_buttons_container {
   display: flex;
   align-items: center;
   justify-content: center;
   flex: .7;
 }
 
-.nav_comp_button {
-  user-select: none;
-  -webkit-user-select: none;
+.nav_button {
   color: rgb(114, 114, 114);
   background-color: white;
-  font-family: Roboto;
-  font-weight: 300;
-  font-size: 18px;
-  padding: 10px;
-  padding-left: 30px;
-  padding-right: 30px;
+  font: 300 18px Roboto;
+  padding: 10px 30px;
   border-radius: 20px;
-  border-style: solid;
-  border-color: rgb(177, 177, 177);
-  border-width: 1px;
+  border: 1px solid rgb(177, 177, 177);
   margin-right: 20px;
   transition: width .3s, box-shadow .3s;
   width: 150px;
 }
 
-.nav_comp_button:hover {
+.nav_button:hover {
   width: 180px;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.15) inset;
   cursor: pointer;
 }
 
-.nav_comp_button:active {
+.nav_button:active {
   transition: width .3s, box-shadow 0s;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0) inset;
   color: rgb(201, 201, 201);
   border-color: rgb(201, 201, 201);
 }
 
+/* Notification Styles */
+.notif {
+  z-index: 200;
+  position: fixed;
+  right: 4%;
+  top: 120px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 13px;
+  padding: 30px 25px;
+  backdrop-filter: blur(4px);
+  font: 300 18px Roboto;
+  max-width: 350px;
+  text-align: center;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+  transition: opacity 1s ease-in-out;
+}
+
+.notif_close {
+  position: fixed;
+  right: 6px;
+  top: 6px;
+  font: 400 18px Roboto;
+  width: 20px;
+  height: 20px;
+  background: center/100% url("images/x.png");
+  opacity: 80%;
+}
+
+.notif_close:hover {
+  opacity: 60%;
+}
+
+/* Modal Styles */
+.modal_base {
+  z-index: 400;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  z-index: 500;
+  position: relative;
+  background-color: red;
+  border-radius: 20px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+  flex: .95;
+  display: flex;
+  height: 96%;
+}
+
+.modal_content {
+  flex: 1;
+  width: auto;
+  height: auto;
+}
+
+.modal_content::-webkit-scrollbar {
+  width: 12px;
+}
+
+.modal_content::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  border-radius: 10px;
+}
+
+.modal_content::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.modal_close {
+  position: absolute;
+  left: calc(100% - 34px);
+  top: 10px;
+  width: 25px;
+  height: 25px;
+  background: center/100% url("images/x.png");
+  opacity: 60%;
+  transition: opacity .2s;
+}
+
+.modal_close:hover {
+  opacity: 40%;
+}
+
+/* Frames */
+.frame_container{
+  display: flex;
+  height: 100%;
+}
+
+.frame {
+  z-index: 800;
+  flex: 1;
+  border-radius: 20px;
+} 
+
+/* Modal Components */
+.resume_container {
+  border-radius: 20px;
+}
+
+.resume {
+  background: center/100% url("images/resume.png");
+  background-size: 70%;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+.resume_download {
+  position: absolute;
+  left: calc(100% - 65px);
+  top: 10px;
+  width: 25px;
+  height: 25px;
+  background: center/100% url("images/download.png");
+  opacity: 60%;
+  transition: opacity .2s;
+}
+
+.resume_download:hover {
+  opacity: 40%;
+}
+
+/* Main Page Content Styles */
 main {
   user-select: none;
   -webkit-user-select: none;
   display: flex;
-  padding: 70px;
-  padding-top: 100px;
-  gap: 30px;
+  padding: 100px 70px 70px;
+}
+
+h1 {
+  margin: 0 0 17px;
+  font: 400 24px Roboto;
+}
+
+p {
+  margin: 0 0 20px;
+  text-align: center;
+  font: 300 20px Roboto;
+}
+
+canvas {
+  border-radius: 15px;
+  border: 1px solid rgb(177, 177, 177);
+  margin-top: 80px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.text_center {
+  text-align: center;
 }
 
 .info_section {
@@ -107,35 +249,13 @@ main {
   display: flex;
   flex-direction: column;
   background-color: white;
-  padding: 40px;
-  padding-top: 50px;
-  padding-bottom: 30px;
-  margin-top: 50px;
-  margin-bottom: 10px;
+  padding: 50px 40px 30px;
+  margin: 50px 0 10px;
   border-radius: 25px;
-  border-style: solid;
-  border-color: rgb(177, 177, 177);
-  border-width: 1px;
+  border: 1px solid rgb(177, 177, 177);
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
   max-width: 1000px;
   height: min-content;
-}
-
-h1 {
-  margin: 0;
-  font-family: Roboto;
-  font-weight: 400;
-  font-size: 24px;
-  margin-bottom: 17px;
-}
-
-p {
-  margin: 0;
-  text-align: center;
-  font-family: Roboto;
-  font-weight: 300;
-  font-size: 20px;
-  margin-bottom: 20px;
 }
 
 .profile_image_container {
@@ -149,31 +269,24 @@ p {
 }
 
 .profile_image {
-  user-select: none;
-  -webkit-user-select: none;
-  background-image: url(images/mc2.jpg);
+  background: -30px -115px/107% url(images/mc2.jpg);
   height: 400px;
   width: 400px;
-  background-size: 107%;
   border-radius: 100%;
-  background-position: -30px -115px;
   transition: height .3s, width .3s, background-size .3s, background-position .3s;
 }
 
 .profile_image:hover {
-  height: 425px;
-  width: 425px;
-  background-size: 110%;
-  background-position: -40px -130px;
+  height: 440px;
+  width: 440px;
+  background: -40px -130px/110% url(images/mc2.jpg);
 }
 
 .profile_note {
-  user-select: none;
-  -webkit-user-select: none;
-  background-image: url(images/me.png);
+  background: center/100% url(images/me.png);
   height: 100px;
   width: 100px;
-  background-size: 100%;
+  margin-bottom: 100px;
   opacity: 0%;
   transition: opacity .3s;
   position: absolute;
@@ -202,17 +315,11 @@ p {
   user-select: none;
   -webkit-user-select: none;
   background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(247,247,247,1) 50%, rgba(198,198,198,1) 100%);
-  font-family: Roboto;
-  font-weight: 300;
-  font-size: 18px;
+  font: 300 18px Roboto;
   color: rgb(65, 65, 65);
-  padding: 10px;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding: 10px 30px 10px;
   border-radius: 50px;
-  border-style: solid;
-  border-color: rgba(65, 65, 65, 0.562);
-  border-width: 1px;
+  border: 1px solid rgba(65, 65, 65, 0.562);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0) inset;
   height: 45px;
   transition: box-shadow .2s, opacity .2s, letter-spacing .2s, height .2s;
@@ -259,12 +366,8 @@ p {
 }
 
 .matrix_cell {
-  user-select: none;
-  -webkit-user-select: none;
   padding: 20px;
-  font-family: Roboto;
-  font-weight: 300;
-  font-size: 18px;
+  font: 300 18px Roboto;
   background-color: white;
   width: 300px;
   border-width: 1px;
@@ -283,6 +386,12 @@ p {
   border-bottom-width: 2px;
   border-top-right-radius: var(--matrix_border_radius);
   border-top-left-radius: var(--matrix_border_radius);
+}
+
+.matrix_cell_header {
+  margin: 0;
+  padding: 0;
+  font-weight: 300;
 }
 
 .matrix_cell:last-child {
@@ -313,35 +422,20 @@ p {
   width: 260px;
 }
 
-canvas {
-  user-select: none;
-  -webkit-user-select: none;
-  border-style: solid;
-  border-color: rgb(177, 177, 177);
-  border-radius: 25px;
-  border-width: 1px;
-  margin-top: 80px;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.25);
-}
-
 .physics_container {
-  user-select: none;
   -webkit-user-select: none;
   position: relative;
 }
 
 .trash_icon {
-  user-select: none;
-  -webkit-user-select: none;
-  background-image: url("/images/trash.png");
-  background-size: 100%;
+  background: center/100% url("/images/trash.png") white;
   width: 60px;
   height: 60px;
-  background-color: white;
+  position: absolute;
+  top: 100px;
+  right: 20px;
   border-radius: 15px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgb(177, 177, 177);
+  border: 1px solid rgb(177, 177, 177);
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
   position: absolute;
   top: 99px;
