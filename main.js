@@ -1,5 +1,5 @@
 "use strict";
-import { newModalBase } from "./modules/modal.js";
+import { newiFrameModal } from "./modules/modal.js";
 import { newNotification } from "./modules/notification.js"
 import { newElement } from "./modules/elementAssembly.js"
 
@@ -31,14 +31,9 @@ function resumeButtons() {
     }
 
     function resumeModal () {
-        let modal = newModalBase();
-        let base = modal.modalBase;
-        let close = modal.modalClose;
-        let container = newElement("div", "frame_container border_shadow", base);
-        let iframe = newElement("iframe", "frame", container);
-        iframe.setAttribute("src", "./resume.html");
-        container.appendChild(close);
-        let download = newElement("div", "resume_download", container)
+        let modal = newiFrameModal();
+        modal.iframe.setAttribute("src", "./resume.html");
+        let download = newElement("div", "resume_download", modal.iframeContainer)
         download.setAttribute("onClick", 
         "window.open('/downloadable/Resume - Mitchell Carothers.pdf')");
     }
