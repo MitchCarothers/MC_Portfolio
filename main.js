@@ -5,9 +5,10 @@ import { newElement } from "./modules/elementAssembly.js"
 
 profileImage();
 resumeButtons();
+aboutmeButton();
 setTimeout(canvas, 100);
 
-function profileImage () {
+function profileImage() {
     const profile_note = document.getElementById("profile_note");
     const profile_image = document.getElementById("profile_image");
 
@@ -30,12 +31,19 @@ function resumeButtons() {
         buttons[button].addEventListener("click", resumeModal);
     }
 
-    function resumeModal () {
-        let modal = newiFrameModal();
-        modal.iframe.setAttribute("src", "./resume.html");
+    function resumeModal() {
+        let modal = newiFrameModal("./resume.html");
         let download = newElement("div", "resume_download", modal.iframeContainer)
         download.setAttribute("onClick", 
         "window.open('/downloadable/Resume - Mitchell Carothers.pdf')");
+    }
+}
+
+function aboutmeButton() {
+    let button = document.getElementById("nav_aboutme");
+    button.addEventListener("click", aboutmeModal);
+    function aboutmeModal() {
+        newiFrameModal("./aboutme.html");
     }
 }
 

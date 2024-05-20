@@ -119,6 +119,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+    opacity: 100%;
+  transition: opacity .1s;
 }
 
 .modal_close {
@@ -128,12 +130,12 @@ body {
   width: 25px;
   height: 25px;
   background: center/100% url("images/x.png");
-  opacity: 60%;
-  transition: opacity .2s;
+  opacity: 80%;
+  transition: opacity .03s;
 }
 
 .modal_close:hover {
-  opacity: 40%;
+  opacity: 60%;
 }
 
 /* iFrames */
@@ -146,6 +148,8 @@ body {
   bottom: 3%;
   background: var(--primary_gradient) black no-repeat fixed;
   padding: 40px 15px 20px;
+  opacity: 100%;
+  transition: opacity .5s;
 }
 
 .frame {
@@ -188,13 +192,16 @@ body {
   width: 25px;
   height: 25px;
   background: center/100% url("images/download.png");
-  opacity: 60%;
-  transition: opacity .2s;
+  opacity: 80%;
+  transition: opacity .05s;
 }
 
 .resume_download:hover {
-  opacity: 40%;
+  opacity: 60%;
 }
+
+/* About Me Page */
+
 
 /* Main Page Content Styles */
 main {
