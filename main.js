@@ -1,7 +1,7 @@
 "use strict";
-import { newModal } from "./modules/modal.js";
+import { newModalBase } from "./modules/modal.js";
 import { newNotification } from "./modules/notification.js"
-import { newElement, newTextNode } from "./modules/elementAssembly.js"
+import { newElement } from "./modules/elementAssembly.js"
 
 profileImage();
 resumeButtons();
@@ -27,43 +27,21 @@ function resumeButtons() {
     ];
 
     for (let button in buttons) {
-        buttons[button].addEventListener("click", resumeModal)
+        buttons[button].addEventListener("click", resumeModal);
     }
 
     function resumeModal () {
-        let modalObj = newModal();
-        let modal = modalObj.modal;
-        let modalContent = modalObj.modalContent;
-        let modalBase = modalObj.modalBase;
-        let container = newElement("div", "frame_container", modalContent)
+        let modal = newModalBase();
+        let base = modal.modalBase;
+        let close = modal.modalClose;
+        let container = newElement("div", "frame_container border_shadow", base);
         let iframe = newElement("iframe", "frame", container);
         iframe.setAttribute("src", "./resume.html");
-    //    let resume = newElement("div", "resume", modalContent);
-
-        // Download Button Setup
-    //    let downloadBtn = newElement("div", "resume_download", modal);
-    //    downloadBtn.setAttribute("onClick", 
-    //    "window.open('/downloadable/Resume - Mitchell Carothers.pdf')");
-
-        // I found this more simple and effective than media queries
-        // Performance is likely slightly worse though
-    //    let scaling = .8;
-    //    function setHeight () {
-    //        resume.style.height = `${(window.innerWidth * scaling)}px`;
-    //    }
-    //    setHeight();
-    //    window.addEventListener("resize", setHeight);
-    //    modalBase.addEventListener("modalRemoved", () => {
-    //        window.removeEventListener("resize", setHeight);
-    //    })
+        container.appendChild(close);
+        let download = newElement("div", "resume_download", container)
+        download.setAttribute("onClick", 
+        "window.open('/downloadable/Resume - Mitchell Carothers.pdf')");
     }
-
-    //function resumeModal () {
-    //    const modalContainer = document.getElementById("modal_container");
-    //    let container = newElement("div", "modal_frame_container", modalContainer)
-    //    let iframe = newElement("iframe", "modal_frame", container);
-    //    iframe.setAttribute("src", "./resume.html");
-    //}
 }
 
 function canvas() {

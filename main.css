@@ -13,19 +13,12 @@
 }
 
 body {
-  user-select: none;
-  -webkit-user-select: none;
   margin: 0;
-  background: var(--primary_gradient);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-color: black;
+  background: var(--primary_gradient) black no-repeat fixed;
 }
 
 /* Nav Bar Styles */
 .nav_primary {
-  user-select: none;
-  -webkit-user-select: none;
   display: flex;
   align-items: center;
   height: 80px;
@@ -128,37 +121,6 @@ body {
   align-items: center;
 }
 
-.modal {
-  z-index: 500;
-  position: relative;
-  background-color: red;
-  border-radius: 20px;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
-  flex: .95;
-  display: flex;
-  height: 96%;
-}
-
-.modal_content {
-  flex: 1;
-  width: auto;
-  height: auto;
-}
-
-.modal_content::-webkit-scrollbar {
-  width: 12px;
-}
-
-.modal_content::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-  border-radius: 10px;
-}
-
-.modal_content::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
 .modal_close {
   position: absolute;
   left: calc(100% - 34px);
@@ -174,28 +136,48 @@ body {
   opacity: 40%;
 }
 
-/* Frames */
+/* iFrames */
 .frame_container{
   display: flex;
-  height: 100%;
+  position: fixed;
+  right: 10%;
+  left: 10%;
+  top: 3%;
+  bottom: 3%;
+  background: var(--primary_gradient) black no-repeat fixed;
+  padding: 40px 10px 20px;
 }
 
 .frame {
-  z-index: 800;
+  z-index: 600;
   flex: 1;
-  border-radius: 20px;
-} 
-
-/* Modal Components */
-.resume_container {
-  border-radius: 20px;
+  border: none;
 }
 
+.frame_body {
+  background: transparent;
+}
+
+.frame_body::-webkit-scrollbar {
+  width: 12px;
+}
+
+.frame_body::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.4); 
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+}
+
+.frame_body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgb(180, 180, 180);
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+/* Resume Page */
 .resume {
-  background: center/100% url("images/resume.png");
-  background-size: 70%;
-  background-repeat: no-repeat;
-  width: 100%;
+  width: 80%;
+  margin-bottom: 20px;
 }
 
 .resume_download {
@@ -215,8 +197,6 @@ body {
 
 /* Main Page Content Styles */
 main {
-  user-select: none;
-  -webkit-user-select: none;
   display: flex;
   padding: 100px 70px 70px;
 }
@@ -239,13 +219,17 @@ canvas {
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
+.border_shadow {
+  border-radius: 25px;
+  border: 1px solid rgb(177, 177, 177);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
+}
+
 .text_center {
   text-align: center;
 }
 
 .info_section {
-  user-select: none;
-  -webkit-user-select: none;
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -259,8 +243,6 @@ canvas {
 }
 
 .profile_image_container {
-  user-select: none;
-  -webkit-user-select: none;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -295,8 +277,6 @@ canvas {
 }
 
 .main_content_container {
-  user-select: none;
-  -webkit-user-select: none;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -312,8 +292,6 @@ canvas {
 }
 
 .page_button {
-  user-select: none;
-  -webkit-user-select: none;
   background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(247,247,247,1) 50%, rgba(198,198,198,1) 100%);
   font: 300 18px Roboto;
   color: rgb(65, 65, 65);
@@ -326,8 +304,6 @@ canvas {
 }
 
 .page_button_container {
-  user-select: none;
-  -webkit-user-select: none;
   height: 80px; 
   width: 240px; 
   display: flex; 
@@ -355,8 +331,6 @@ canvas {
 }
 
 .matrix_container {
-  user-select: none;
-  -webkit-user-select: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -423,7 +397,6 @@ canvas {
 }
 
 .physics_container {
-  -webkit-user-select: none;
   position: relative;
 }
 
@@ -454,28 +427,4 @@ canvas {
 .selectable {
   user-select: text;
   -webkit-user-select: text;
-}
-
-.modal_container {
-  position: relative;
-}
-
-.modal {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  background-color: black;
-  border-radius: 30px;
-  opacity: 60%;
-  left: -380px;
-  top: 140px;
-  padding: 5px;
-  height: 80px;
-  color: white;
-  font-family: Roboto;
-  font-weight: 300;
-  font-size: 15px;
-  text-align: center;
-  z-index: 1000;
 }
