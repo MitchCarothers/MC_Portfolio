@@ -119,22 +119,29 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-    opacity: 100%;
+  opacity: 100%;
   transition: opacity .1s;
 }
 
 .modal_close {
+  background: white;
   position: absolute;
-  left: calc(100% - 34px);
-  top: 10px;
-  width: 25px;
-  height: 25px;
-  background: center/100% url("images/x.png");
-  opacity: 80%;
-  transition: opacity .03s;
+  left: calc(100% - 38px);
+  top: 7px;
+  padding: 3px;
+  border-radius: 100%;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
 }
 
-.modal_close:hover {
+.modal_close_icon {
+  background: center/100% url("images/x.png");
+  opacity: 80%;
+  transition: opacity .1s;
+  width: 25px;
+  height: 25px;
+}
+
+.modal_close_icon:hover {
   opacity: 60%;
 }
 
@@ -147,9 +154,9 @@ body {
   top: 3%;
   bottom: 3%;
   background: var(--primary_gradient) black no-repeat fixed;
-  padding: 40px 15px 20px;
+  padding: 45px 15px 20px;
   opacity: 100%;
-  transition: opacity .5s;
+  transition: opacity .3s, top .2s ease-in-out, bottom .1s ease-in-out;
 }
 
 .frame {
@@ -187,16 +194,25 @@ body {
 
 .resume_download {
   position: absolute;
-  left: calc(100% - 65px);
-  top: 10px;
-  width: 25px;
-  height: 25px;
-  background: center/100% url("images/download.png");
-  opacity: 80%;
-  transition: opacity .05s;
+  left: calc(100% - 74px);
+  top: 7px;
+  background: white;
+  border-radius: 100%;
+  padding: 3px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  outline: 2px solid rgb(78, 78, 78);
+  outline-offset: -5px;
 }
 
-.resume_download:hover {
+.resume_download_icon {
+  background: center/80% url("images/download.png");
+  width: 25px;
+  height: 25px;
+  opacity: 80%;
+  transition: opacity .1s;
+}
+
+.resume_download_icon:hover {
   opacity: 60%;
 }
 

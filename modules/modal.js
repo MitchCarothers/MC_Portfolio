@@ -19,18 +19,25 @@ export function newiFrameModal(src) {
     let iframeContainer = newElement("div", "frame_container border_shadow", base);
     let iframe = newElement("iframe", "frame", iframeContainer);
     iframe.setAttribute("src", src);
-    animateModal(base, iframeContainer);
+    animateModal(base, iframeContainer, iframe);
     let close = newElement("div", "modal_close", iframeContainer);
+    newElement("div", "modal_close_icon", close);
     modalWhenClosed(base, close);
     return { base, close, iframeContainer, iframe };
 }
 
 function animateModal(base, modal) {
+    let modalTargetTop = modal.style.top;
+    let modalTargetBottom = modal.style.bottom;
     base.style.opacity = "0%";
     modal.style.opacity = "0%";
+    modal.style.top = "20%";
+    modal.style.bottom = "20%";
     setTimeout(() => {
         base.style.opacity = "100%";
         modal.style.opacity = "100%";
+        modal.style.top = modalTargetTop;
+        modal.style.bottom = modalTargetBottom;
     }, 1);
 }
 

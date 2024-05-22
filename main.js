@@ -33,9 +33,11 @@ function resumeButtons() {
 
     function resumeModal() {
         let modal = newiFrameModal("./resume.html");
-        let download = newElement("div", "resume_download", modal.iframeContainer)
+        let download = newElement("div", "resume_download", modal.iframeContainer);
         download.setAttribute("onClick", 
         "window.open('/downloadable/Resume - Mitchell Carothers.pdf')");
+        newElement("div", "resume_download_icon", download)
+
     }
 }
 
