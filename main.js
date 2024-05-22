@@ -2,6 +2,7 @@
 import { newiFrameModal } from "./modules/modal.js";
 import { newNotification } from "./modules/notification.js"
 import { newElement } from "./modules/elementAssembly.js"
+import { runRender, stopRender } from "./physics.js";
 
 profileImage();
 resumeButtons();
@@ -54,6 +55,8 @@ function canvas() {
 
     canvas.addEventListener("click", notification);
     function notification () {
+        runRender();
+        canvas.style.filter = "brightness(1)";
         canvas.removeEventListener("click", notification);
         newNotification("Click a skill under 'My Skills' to spawn additional objects.")
     }

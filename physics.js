@@ -146,7 +146,7 @@ let skillButtons = {
     skillWriting: document.getElementById("skill_writing")
 };
 
-for (button in skillButtons) {
+for (let button in skillButtons) {
     skillButtons[button].addEventListener("click", (event) => {
         addBody(event);
     });
@@ -185,3 +185,12 @@ window.addEventListener("resize", () => {
 Render.run(render);
 let runner = Runner.create();
 Runner.run(runner, engine);
+stopRender();
+
+export function runRender() {
+    runner.enabled = true;
+}
+
+export function stopRender() {
+    runner.enabled = false;
+}

@@ -241,6 +241,7 @@ canvas {
   border: 1px solid rgb(177, 177, 177);
   margin-top: 80px;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  filter: brightness(20%);
 }
 
 .border_shadow {

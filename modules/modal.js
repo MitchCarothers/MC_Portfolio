@@ -19,7 +19,7 @@ export function newiFrameModal(src) {
     let iframeContainer = newElement("div", "frame_container border_shadow", base);
     let iframe = newElement("iframe", "frame", iframeContainer);
     iframe.setAttribute("src", src);
-    animateModal(base, iframeContainer, iframe);
+    animateModal(base, iframeContainer);
     let close = newElement("div", "modal_close", iframeContainer);
     newElement("div", "modal_close_icon", close);
     modalWhenClosed(base, close);
