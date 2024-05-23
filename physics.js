@@ -6,7 +6,8 @@ let Engine = Matter.Engine,
     Bodies = Matter.Bodies,
     Composite = Matter.Composite,
     Mouse = Matter.Mouse,
-    MouseConstraint = Matter.MouseConstraint;
+    MouseConstraint = Matter.MouseConstraint,
+    Events = Matter.Events;
 
 // matter js physics engine setup
 let engine = Engine.create();
@@ -160,24 +161,26 @@ trashButton.addEventListener("click", () => {
 });
 
 // world boundaries
-let winHeight = render.options.height;
-let boundary = 60;
-let ground, leftWall, rightWall, ceiling;
-let setBoundaries = function setBoundaries() {
+let ground;
+let leftWall;
+let rightWall;
+let ceiling;
+setBoundaries();
+function setBoundaries() {
     let winWidth = determineWindowWidth();
+    let winHeight = render.options.height;
+    let boundary = 60;
     ground = Bodies.rectangle((winWidth / 2), (winHeight + (boundary / 2)), winWidth, boundary, { isStatic: true }),
     leftWall = Bodies.rectangle(-(boundary / 2), (winHeight / 2), boundary, winHeight, { isStatic: true }),
     rightWall = Bodies.rectangle((winWidth + (boundary / 2)), (winHeight / 2), boundary, winHeight, { isStatic: true }),
     ceiling = Bodies.rectangle((winWidth / 2), -(boundary / 2), winWidth, boundary, { isStatic: true });
-
-    Composite.add(engine.world, [ground, leftWall, rightWall, ceiling]);
+    Composite.add(engine.world, [ ground, leftWall, rightWall, ceiling ]);
 }
-setBoundaries();
 
 // dynamic canvas sizing
 window.addEventListener("resize", () => {
     render.canvas.width = determineWindowWidth();
-    Composite.remove(engine.world, [ground, leftWall, rightWall, ceiling]);
+    Composite.remove(engine.world, [ ground, leftWall, rightWall, ceiling ]);
     setBoundaries()
 });
 
@@ -185,12 +188,61 @@ window.addEventListener("resize", () => {
 Render.run(render);
 let runner = Runner.create();
 Runner.run(runner, engine);
-stopRender();
+runner.enabled = false;
 
-export function runRender() {
-    runner.enabled = true;
+let isRunning = runner.enabled;
+export function toggleRunner() {
+    runner.enabled = isRunning ? false : true;
+    isRunning = runner.enabled;
 }
 
-export function stopRender() {
-    runner.enabled = false;
-}
+export let pauseControl = {
+    isPaused: false,
+    pausedObjects: {},
+    pause: (
+        function pause() {
+            let bodies = engine.world.bodies;
+            this.pausedObjects = structuredClone(bodies);
+            for (let body in bodies) {
+                // Check if the body is a boundary
+                if (![ground,leftWall,rightWall,ceiling].includes(bodies[body])) {
+                    bodies[body].isStatic = true;
+                }
+            }
+            this.isPaused = true;
+        }
+    ),
+    unpause: (
+        function unPause() {
+            let bodies = engine.world.bodies;
+            for (let body in bodies) {
+                // Check if the body is a boundary
+                if (![ground,leftWall,rightWall,ceiling].includes(bodies[body])) {
+                    bodies[body].isStatic = false;
+                }
+            }
+            this.isPaused = false;
+        }
+    ),
+    togglePause: (
+        function togglePause() {
+            if (this.isPaused === true) {
+                this.unpause();
+            } else if (this.isPaused === false) {
+                this.pause();
+            }
+        }
+    )
+};
+
+Events.on(mouseConstraint, "startdrag", (event) => {
+    if (![ground,leftWall,rightWall,ceiling].includes(event.body) && pauseControl.isPaused === true) {
+        event.body.isStatic = false;
+    }
+});
+
+Events.on(mouseConstraint, "enddrag", (event) => {
+    if (![ground,leftWall,rightWall,ceiling].includes(event.body) && pauseControl.isPaused === true) {
+        event.body.isStatic = true;
+    }
+});

@@ -2,12 +2,13 @@
 import { newiFrameModal } from "./modules/modal.js";
 import { newNotification } from "./modules/notification.js"
 import { newElement } from "./modules/elementAssembly.js"
-import { runRender, stopRender } from "./physics.js";
+import { toggleRunner, pauseControl } from "./physics.js";
 
 profileImage();
 resumeButtons();
 aboutmeButton();
 setTimeout(canvas, 100);
+//const pauseController = new(pauseControl);
 
 function profileImage() {
     const profile_note = document.getElementById("profile_note");
@@ -51,13 +52,29 @@ function aboutmeButton() {
 }
 
 function canvas() {
-    const canvas = document.getElementById("physCanvas");
+    const container = document.getElementById("physics_container");
+    let start = document.getElementById("physics_start");
+    let pause = document.getElementById("pause");
+    let pauseStyle1 = 'center/40% url("/images/pause.png") white no-repeat';
+    let pauseStyle2 = 'center/40% url("/images/play.png") white no-repeat';
 
-    canvas.addEventListener("click", notification);
-    function notification () {
-        runRender();
-        canvas.style.filter = "brightness(1)";
-        canvas.removeEventListener("click", notification);
-        newNotification("Click a skill under 'My Skills' to spawn additional objects.")
+    start.addEventListener("click", startSim);
+    function startSim() {
+        toggleRunner();
+        start.remove();
+        container.style.opacity = "100%";
+        setTimeout(() => {
+            newNotification("Click a skill to spawn additional objects")
+        }, 1000);
+    }
+
+    pause.addEventListener("click", pauseSim);
+    function pauseSim() {
+        pauseControl.togglePause();
+        if (pause.style.background = pauseStyle1) {
+            pause.style.background = pauseStyle2;
+        } else if (pause.style.background = pauseStyle2) {
+            pause.style.background = pauseStyle1;
+        }
     }
 }

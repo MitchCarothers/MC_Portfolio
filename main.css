@@ -218,6 +218,81 @@ body {
 
 /* About Me Page */
 
+/* Physics Simulation */
+.physics_container {
+  position: relative;
+  opacity: 60%;
+}
+
+canvas {
+  border-radius: 25px;
+  border: 1px solid rgb(177, 177, 177);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
+  margin-top: 80px;
+}
+
+.physics_start {
+  z-index: 110;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  top: 80px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font: 300 30px Roboto;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  backdrop-filter: blur(5px);
+}
+
+.trash_icon {
+  z-index: 90;
+  background: center/100% url("/images/trash.png") white;
+  width: 60px;
+  height: 60px;
+  border-radius: 15px;
+  border: 1px solid rgb(177, 177, 177);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 99px;
+  right: 20px;
+}
+
+.trash_icon:hover {
+  opacity: 88%;
+  cursor: pointer;
+}
+
+.trash_icon:active {
+  opacity: 75%;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5) inset;
+}
+
+.pause_icon {
+  z-index: 90;
+  background: center/40% url("/images/pause.png") white no-repeat;
+  width: 60px;
+  height: 60px;
+  border-radius: 15px;
+  border: 1px solid rgb(177, 177, 177);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 99px;
+  right: 100px;
+}
+
+.pause_icon:hover {
+  opacity: 88%;
+  cursor: pointer;
+}
+
+.pause_icon:active {
+  opacity: 75%;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5) inset;
+}
 
 /* Main Page Content Styles */
 main {
@@ -234,14 +309,6 @@ p {
   margin: 0 0 20px;
   text-align: center;
   font: 300 20px Roboto;
-}
-
-canvas {
-  border-radius: 15px;
-  border: 1px solid rgb(177, 177, 177);
-  margin-top: 80px;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
-  filter: brightness(20%);
 }
 
 .border_shadow {
@@ -407,6 +474,7 @@ canvas {
   width: 330px;
   box-shadow: 0 0 10px rgba(0, 132, 255, 0.7);
   z-index: 10;
+  cursor: pointer;
 }
 
 .matrix_cell:not(:first-child):active {
@@ -419,34 +487,6 @@ canvas {
 
 .widget_width {
   width: 260px;
-}
-
-.physics_container {
-  position: relative;
-}
-
-.trash_icon {
-  background: center/100% url("/images/trash.png") white;
-  width: 60px;
-  height: 60px;
-  position: absolute;
-  top: 100px;
-  right: 20px;
-  border-radius: 15px;
-  border: 1px solid rgb(177, 177, 177);
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
-  position: absolute;
-  top: 99px;
-  right: 20px;
-}
-
-.trash_icon:hover {
-  opacity: 88%;
-}
-
-.trash_icon:active {
-  opacity: 75%;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5) inset;
 }
 
 .selectable {
