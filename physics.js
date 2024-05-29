@@ -160,11 +160,13 @@ trashButton.addEventListener("click", () => {
     Composite.add(engine.world, mouseConstraint);
 });
 
-// world boundaries
-let ground;
-let leftWall;
-let rightWall;
-let ceiling;
+// declare world boundary objects
+let ground, leftWall, rightWall, ceiling;
+function getBounds() {
+    return [ground, leftWall, rightWall, ceiling];
+}
+
+// calculate boundaries
 setBoundaries();
 function setBoundaries() {
     let winWidth = determineWindowWidth();
@@ -174,13 +176,13 @@ function setBoundaries() {
     leftWall = Bodies.rectangle(-(boundary / 2), (winHeight / 2), boundary, winHeight, { isStatic: true }),
     rightWall = Bodies.rectangle((winWidth + (boundary / 2)), (winHeight / 2), boundary, winHeight, { isStatic: true }),
     ceiling = Bodies.rectangle((winWidth / 2), -(boundary / 2), winWidth, boundary, { isStatic: true });
-    Composite.add(engine.world, [ ground, leftWall, rightWall, ceiling ]);
+    Composite.add(engine.world, getBounds());
 }
 
 // dynamic canvas sizing
 window.addEventListener("resize", () => {
     render.canvas.width = determineWindowWidth();
-    Composite.remove(engine.world, [ ground, leftWall, rightWall, ceiling ]);
+    Composite.remove(engine.world, getBounds());
     setBoundaries()
 });
 
@@ -188,24 +190,24 @@ window.addEventListener("resize", () => {
 Render.run(render);
 let runner = Runner.create();
 Runner.run(runner, engine);
-runner.enabled = false;
+runner.enabled = false; // pause simulation
 
+// render toggling logic
 let isRunning = runner.enabled;
 export function toggleRunner() {
     runner.enabled = isRunning ? false : true;
     isRunning = runner.enabled;
 }
 
+// physics pausing logic
 export let pauseControl = {
     isPaused: false,
-    pausedObjects: {},
     pause: (
         function pause() {
             let bodies = engine.world.bodies;
-            this.pausedObjects = structuredClone(bodies);
             for (let body in bodies) {
                 // Check if the body is a boundary
-                if (![ground,leftWall,rightWall,ceiling].includes(bodies[body])) {
+                if (!getBounds().includes(bodies[body])) {
                     bodies[body].isStatic = true;
                 }
             }
@@ -217,7 +219,7 @@ export let pauseControl = {
             let bodies = engine.world.bodies;
             for (let body in bodies) {
                 // Check if the body is a boundary
-                if (![ground,leftWall,rightWall,ceiling].includes(bodies[body])) {
+                if (!getBounds().includes(bodies[body])) {
                     bodies[body].isStatic = false;
                 }
             }
@@ -236,13 +238,13 @@ export let pauseControl = {
 };
 
 Events.on(mouseConstraint, "startdrag", (event) => {
-    if (![ground,leftWall,rightWall,ceiling].includes(event.body) && pauseControl.isPaused === true) {
+    if (!getBounds().includes(event.body) && pauseControl.isPaused === true) {
         event.body.isStatic = false;
     }
 });
 
 Events.on(mouseConstraint, "enddrag", (event) => {
-    if (![ground,leftWall,rightWall,ceiling].includes(event.body) && pauseControl.isPaused === true) {
+    if (!getBounds().includes(event.body) && pauseControl.isPaused === true) {
         event.body.isStatic = true;
     }
 });

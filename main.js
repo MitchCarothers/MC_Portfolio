@@ -8,7 +8,6 @@ profileImage();
 resumeButtons();
 aboutmeButton();
 setTimeout(canvas, 100);
-//const pauseController = new(pauseControl);
 
 function profileImage() {
     const profile_note = document.getElementById("profile_note");

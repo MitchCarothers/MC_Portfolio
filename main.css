@@ -156,7 +156,7 @@ body {
   background: var(--primary_gradient) black no-repeat fixed;
   padding: 45px 15px 20px;
   opacity: 100%;
-  transition: opacity .3s, top .2s ease-in-out, bottom .1s ease-in-out;
+  transition: opacity .3s;
 }
 
 .frame {
@@ -204,12 +204,15 @@ body {
   outline-offset: -5px;
 }
 
+.resume_download:hover {
+  outline: 2px solid rgb(78, 78, 78, .6);
+}
+
 .resume_download_icon {
   background: center/80% url("images/download.png");
   width: 25px;
   height: 25px;
   opacity: 80%;
-  transition: opacity .1s;
 }
 
 .resume_download_icon:hover {
@@ -243,7 +246,7 @@ canvas {
   left: 0;
   right: 0;
   font: 300 30px Roboto;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.85);
   padding: 20px;
   backdrop-filter: blur(5px);
 }

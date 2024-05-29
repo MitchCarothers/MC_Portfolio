@@ -27,17 +27,11 @@ export function newiFrameModal(src) {
 }
 
 function animateModal(base, modal) {
-    let modalTargetTop = modal.style.top;
-    let modalTargetBottom = modal.style.bottom;
     base.style.opacity = "0%";
     modal.style.opacity = "0%";
-    modal.style.top = "20%";
-    modal.style.bottom = "20%";
     setTimeout(() => {
         base.style.opacity = "100%";
         modal.style.opacity = "100%";
-        modal.style.top = modalTargetTop;
-        modal.style.bottom = modalTargetBottom;
     }, 1);
 }
 
