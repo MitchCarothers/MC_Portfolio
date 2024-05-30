@@ -60,12 +60,12 @@ body {
   border-radius: 20px;
   border: 1px solid rgb(177, 177, 177);
   margin-right: 20px;
-  transition: width .3s, box-shadow .3s;
-  width: 150px;
+  transition: padding .3s, box-shadow .3s;
+  width: auto;
 }
 
 .nav_button:hover {
-  width: 180px;
+  padding: 10px 45px;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.15) inset;
   cursor: pointer;
 }
@@ -101,7 +101,7 @@ body {
   font: 400 18px Roboto;
   width: 20px;
   height: 20px;
-  background: center/100% url("images/x.png");
+  background: center/100% url("/images/x.png");
   opacity: 80%;
 }
 
@@ -134,7 +134,7 @@ body {
 }
 
 .modal_close_icon {
-  background: center/100% url("images/x.png");
+  background: center/100% url("/images/x.png");
   opacity: 80%;
   transition: opacity .1s;
   width: 25px;
@@ -142,6 +142,30 @@ body {
 }
 
 .modal_close_icon:hover {
+  opacity: 60%;
+}
+
+.modal_download {
+  position: absolute;
+  left: calc(100% - 74px);
+  top: 7px;
+  background: white;
+  border-radius: 100%;
+  padding: 3px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+}
+
+.modal_download_icon {
+  background: center/80% url("/images/download.png");
+  width: 25px;
+  height: 25px;
+  opacity: 80%;
+  outline: 2px solid rgb(32, 32, 32);
+  outline-offset: -2px;
+  border-radius: 100%;
+}
+
+.modal_download_icon:hover {
   opacity: 60%;
 }
 
@@ -157,6 +181,9 @@ body {
   padding: 45px 15px 20px;
   opacity: 100%;
   transition: opacity .3s;
+  border-radius: 25px;
+  border: 1px solid rgb(177, 177, 177);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
 }
 
 .frame {
@@ -192,33 +219,6 @@ body {
   margin-bottom: 20px;
 }
 
-.resume_download {
-  position: absolute;
-  left: calc(100% - 74px);
-  top: 7px;
-  background: white;
-  border-radius: 100%;
-  padding: 3px;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
-  outline: 2px solid rgb(78, 78, 78);
-  outline-offset: -5px;
-}
-
-.resume_download:hover {
-  outline: 2px solid rgb(78, 78, 78, .6);
-}
-
-.resume_download_icon {
-  background: center/80% url("images/download.png");
-  width: 25px;
-  height: 25px;
-  opacity: 80%;
-}
-
-.resume_download_icon:hover {
-  opacity: 60%;
-}
-
 /* About Me Page */
 
 /* Physics Simulation */
@@ -246,7 +246,7 @@ canvas {
   left: 0;
   right: 0;
   font: 300 30px Roboto;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.7);
   padding: 20px;
   backdrop-filter: blur(5px);
 }
@@ -276,7 +276,7 @@ canvas {
 
 .pause_icon {
   z-index: 90;
-  background: center/40% url("/images/pause.png") white no-repeat;
+  background: center/40% url('/images/pause.png') white no-repeat;
   width: 60px;
   height: 60px;
   border-radius: 15px;
@@ -346,7 +346,7 @@ p {
 }
 
 .profile_image {
-  background: -30px -115px/107% url(images/mc2.jpg);
+  background: -30px -115px/107% url(/images/mc2.jpg);
   height: 400px;
   width: 400px;
   border-radius: 100%;
@@ -356,11 +356,11 @@ p {
 .profile_image:hover {
   height: 440px;
   width: 440px;
-  background: -40px -130px/110% url(images/mc2.jpg);
+  background: -40px -130px/110% url(/images/mc2.jpg);
 }
 
 .profile_note {
-  background: center/100% url(images/me.png);
+  background: center/100% url(/images/me.png);
   height: 100px;
   width: 100px;
   margin-bottom: 100px;

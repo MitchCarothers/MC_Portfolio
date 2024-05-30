@@ -1,0 +1,69 @@
+{
+    "html": {
+        "type": "rectangle",
+        "width": 80,
+        "height": 112, 
+        "texture": "/images/html.png",
+        "textureScale": 0.055
+    },
+    "css": {
+        "type": "rectangle",
+        "width": 80,
+        "height": 112, 
+        "texture": "/images/css.png",
+        "textureScale": 0.14
+    },
+    "js": {
+        "type": "rectangle",
+        "width": 112,
+        "height": 112, 
+        "texture": "/images/js.png",
+        "textureScale": 0.509
+    },
+    "lua": {
+        "type": "circle",
+        "rad": 58, 
+        "texture": "/images/lua.png",
+        "textureScale": 0.14
+    },
+    "py": {
+        "type": "circle",
+        "rad": 58, 
+        "texture": "/images/py.png",
+        "textureScale": 0.53
+    },
+    "bat": {
+        "type": "rectangle",
+        "width": 80,
+        "height": 112, 
+        "texture": "/images/bat.png",
+        "textureScale": 0.45
+    },
+    "postgre": {
+        "type": "circle",
+        "rad": 58, 
+        "texture": "/images/postgre.png",
+        "textureScale": 0.14
+    },
+    "db": {
+        "type": "rectangle",
+        "width": 85,
+        "height": 90, 
+        "texture": "/images/database.png",
+        "textureScale": 0.2
+    },
+    "c_sharp": {
+        "type": "polygon",
+        "sides": 6,
+        "rad": 64, 
+        "texture": "/images/c_sharp.png",
+        "textureScale": 0.06
+    },
+    "pencil": {
+        "type": "rectangle",
+        "width": 400,
+        "height": 20, 
+        "texture": "/images/pencil.png",
+        "textureScale": 0.3
+    }
+}
