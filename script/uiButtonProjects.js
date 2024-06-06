@@ -1,18 +1,19 @@
-import { newModal } from "./uiModal.js";
+import { iframeModal } from "./modals.js";
 
 export function addProjectButtons() {
+    let modal = new iframeModal("modal_container", "frame_container", "frame", "/iframes/projects.html");
+    modal.create();
+
     let buttons = [
         document.getElementById("nav_projects"),
         document.getElementById("page_projects")
     ];
 
     for (let button in buttons) {
-        buttons[button].addEventListener("click", projectsModal);
+        buttons[button].addEventListener("click", clickedButton);
     };
 
-    function projectsModal() {
-        let iframeSource = '/iframes/projects.html';
-        let modal = newModal("iframe");
-        modal.iframe.setAttribute("src", iframeSource);
+    function clickedButton() {
+        modal.show();
     };
 };

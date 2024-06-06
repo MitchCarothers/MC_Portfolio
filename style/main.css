@@ -12,6 +12,10 @@
   font-family: Roboto, Arial;
 }
 
+.hidden{
+  display: none;
+}
+
 body {
   margin: 0;
   background: var(--primary_gradient) black no-repeat fixed;

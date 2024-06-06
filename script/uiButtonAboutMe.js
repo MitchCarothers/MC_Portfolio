@@ -1,11 +1,11 @@
-import { newModal } from "/script/uiModal.js";
+import { iframeModal } from "./modals.js";
 
 export function addAboutMeButton() {
+    let modal = new iframeModal("modal_container", "frame_container", "frame", "/iframes/aboutme.html");
+    modal.create();
     let aboutMeButton = document.getElementById("nav_aboutme");
-    aboutMeButton.addEventListener("click", createModal);
-    function createModal() {
-        let iframeSource = "/iframes/aboutme.html";
-        let modal = newModal("iframe");
-        modal.iframe.setAttribute("src", iframeSource);
+    aboutMeButton.addEventListener("click", buttonClicked);
+    function buttonClicked() {
+        modal.show();
     };
 };
