@@ -7,6 +7,7 @@ import { addContactMeButton } from "./uiButtonContact.js";
 import { addSpawnButtons } from "./uiPhysicsSpawnButtons.js";
 import { addPhysicsTrashButton } from "./uiPhysicsTrash.js";
 import { addPhysicsPauseButton } from "./uiPhysicsPauseButton.js";
+import { addNotificationSpawnHint } from "./uiNotificationPhysicsSpawnHint.js";
 
 export function addUIFunctionality() {
     addProfileImage();
@@ -18,4 +19,5 @@ export function addUIFunctionality() {
     addSpawnButtons();
     addPhysicsTrashButton();
     addPhysicsPauseButton();
+    addNotificationSpawnHint();
 };

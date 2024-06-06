@@ -9,4 +9,4 @@ export function addPhysicsStartScreen() {
         start.remove();
         container.style.opacity = "100%";
     };
-}
+};

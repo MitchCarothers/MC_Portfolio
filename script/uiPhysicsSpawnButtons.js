@@ -1,11 +1,13 @@
 import { quickSpawn } from "./physicsSpawn.js";
 
 let buttons;
+export let hasUserSpawnedObject;
 export function addSpawnButtons() {
     buttons = getButtons();
     for (let button in buttons) {
         buttons[button].addEventListener("click", (event) => {
             spawnObjects(event);
+            hasUserSpawnedObject = true;
         });
     };
 };

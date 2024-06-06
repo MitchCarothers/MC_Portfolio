@@ -29,11 +29,15 @@ function calcSpawnPos(xPadding, yRange) {
             x: getRandomInt(defaultPadding, (winWidth - defaultPadding)), 
             y: getRandomInt(defaultRange.min, defaultRange.max) 
         };
-    }
+    };
     return returnValue;
 };
 
-/// Expected parameters are { type: string, x: int, y: int, width: int, height: int, texture: string, xScale: float, yScale: float }
+// Expected Parameters
+// Rectangle { type: string, x: int, y: int, width: int, height: int, texture: string, xScale: float, yScale: float }
+// Circle { type: string, x: int, y: int, rad: int, texture: string, xScale: float, yScale: float }
+// Polygon { type: string, x: int, y: int, sides :int, rad: int, texture: string, xScale: float, yScale: float }
+// Note: the numbers listed as int could also be a floating value if desired
 function spawn(param) {
     let body;
     switch (param.type) {
