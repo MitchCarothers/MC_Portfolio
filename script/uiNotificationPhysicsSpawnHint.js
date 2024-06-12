@@ -1,4 +1,4 @@
-import { newNotification } from "./uiNotification.js";
+import { notification } from "./uiNotification.js";
 import { hasUserSpawnedObject } from "./uiPhysicsSpawnButtons.js";
 
 let physicsStart;
@@ -16,8 +16,10 @@ function setNotificationTimer() {
     }, notificationDelay);
 };
 function hintNotification() {
-    let notifX = "2%";
-    let notifY = "25%";
     let message = "Click one of the skills to spawn additional objects!";
-    newNotification(message, notifX, notifY, document.getElementById("physics"));
+    let target = document.getElementById("physics");
+    let styleTop = "25%";
+    let styleRight = "2%";
+    let hintNotification = new notification(message, target, styleTop, styleRight);
+    hintNotification.generate();
 };

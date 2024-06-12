@@ -64,7 +64,7 @@ function enablePausedObjectInteraction() {
         // workaround for bug caused by overlapping objects which allowed the user to unpause multiple objects while the sim was still paused
         for (let body in engine.world.bodies) {
             let target = engine.world.bodies[body];
-            if (target != unpausedObj) {
+            if (target.id != unpausedObj.id) {
                 target.isStatic = true;
             };
         };

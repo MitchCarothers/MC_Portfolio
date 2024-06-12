@@ -1,54 +1,56 @@
 import { newElement, newTextNode } from "./elementAssembly.js";
 
-const container = document.getElementById("notif_container");
-// Text is required in function call. X, y, and parent, are optional.
-// Default x/y will position the notification in the top right (with fixed position).
-// Default parent will be notif_container.
-export function newNotification(text, x, y, parent) {
-    let notif = createNotificationElements(text);
-    if (x && y) { setPosition(notif, x, y) };
-    if (parent) { uniqueParent(parent, notif) };
-    animateNotification(notif);
-    notifWhenClosed(notif);
-    return notif;
-};
-
-// The position is being changed from fixed to absolute
-// to allow for the notification to be visually attached to an element
-function uniqueParent(parent, notif) {
-    parent.appendChild(notif);
-    notif.style.position = "absolute";
-};
-
-function createNotificationElements(text) {
-    let notif = newElement("div", "notif", container);
-    newTextNode(text, notif);
-    newElement("div", "notif_close", notif);
-    return notif;
-};
-
-function animateNotification(notif) {
-    notif.style.opacity = 0;
-    setTimeout(() => {notif.style.opacity = "100%";}, 100);
-    setTimeout(() => {decayNotification(notif)}, 8000);
-};
-
-function setPosition(notif, x, y) {
-    notif.style.top = y;
-    notif.style.right = x;
-};
-
-function notifWhenClosed(button) {
-    button.addEventListener("click", () => {
-        decayNotification(button, .15);
-    });
-};
-
-function decayNotification(notif, speed) {
-    if (speed || speed === 0) {notif.style.transition = `opacity ${speed}s`;}
-    notif.style.opacity = 0;
-    setTimeout(() => {removeNotification}, 1000);
-    function removeNotification() {
-        notif.remove();
+export class notification {
+    container = document.getElementById("notif_container");
+    element;
+    parent;
+    text;
+    styleTop;
+    styleRight;
+    constructor(text, parent, styleTop, styleRight) {
+        this.text = text;
+        this.parent = parent;
+        this.styleTop = styleTop;
+        this.styleRight = styleRight;
+    };
+    generate() {
+        this.createElements();
+        if (this.styleTop && this.styleRight) { this.determinePositioning() };
+        this.animateNotificationEntrance();
+        this.decayTimer();
+        this.createCloseEvents();
+    };
+    createElements() {
+        this.element = newElement("div", "notif", this.determineParent());
+        newElement("div", "notif_close", this.element);
+        newTextNode(this.text, this.element);
+    };
+    determineParent() {
+        let targetParent;
+        this.parent ? targetParent = this.parent : targetParent = this.container;
+        return targetParent;
+    };
+    determinePositioning() {
+        this.element.style.position = "absolute";
+        this.element.style.top = this.styleTop;
+        this.element.style.right = this.styleRight;
+    };
+    animateNotificationEntrance() {
+        this.element.style.opacity = 0;
+        setTimeout( () => { this.element.style.opacity = "100%" }, 100);
+    };
+    decayTimer() {
+        let timeout = 8000;
+        setTimeout( () => { this.deleteNotification(true) }, timeout)
+    }
+    deleteNotification(isAnimated) {
+        if (isAnimated === true) {
+            let transitionTime = 1000;
+            this.element.style.opacity = 0;
+            setTimeout(() => { this.element.remove() }, transitionTime);
+        } else { this.element.remove() };
+    };
+    createCloseEvents() {
+        this.element.addEventListener("click", () => { this.deleteNotification() })
     };
 };
