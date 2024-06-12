@@ -1,4 +1,7 @@
 class modal {
+    baseClass = "modal_base";
+    closeBtnClass = "modal_close";
+    closeIconClass = "modal_close_icon";
     baseElement;
     parentElement;
     closeButton;
@@ -9,7 +12,7 @@ class modal {
         this.baseElement = document.createElement("div");
         this.parentElement = document.getElementById(this.parentID);
         this.parentElement.appendChild(this.baseElement);
-        this.baseElement.setAttribute("class", "modal_base");
+        this.baseElement.setAttribute("class", this.baseClass);
         this.baseElement.addEventListener("click", (event) => {
             if (event.target === this.baseElement) {
                 this.hide()
@@ -18,10 +21,10 @@ class modal {
     }
     createCloseButton(targetParent) {
         this.closeButton = document.createElement("div");
-        this.closeButton.setAttribute("class", "modal_close");
+        this.closeButton.setAttribute("class", this.closeBtnClass);
         targetParent.appendChild(this.closeButton);
         let icon = document.createElement("div");
-        icon.setAttribute("class", "modal_close_icon");
+        icon.setAttribute("class", this.closeIconClass);
         this.closeButton.appendChild(icon);
         this.closeButton.addEventListener("click", () => { this.hide() });
     }
@@ -29,7 +32,7 @@ class modal {
         this.baseElement.setAttribute("class", "hidden");
     }
     show() {
-        this.baseElement.setAttribute("class", "modal_base")
+        this.baseElement.setAttribute("class", this.baseClass)
     }
 }
 

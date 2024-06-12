@@ -15,6 +15,7 @@ export function updateBoundaries() {
     rightWall = Bodies.rectangle((winWidth + (boundary / 2)), (winHeight / 2), boundary, winHeight, { isStatic: true }),
     ceiling = Bodies.rectangle((winWidth / 2), -(boundary / 2), winWidth, boundary, { isStatic: true });
     Composite.add(engine.world, getBounds());
+    hideBoundaries();
 };
 
 // dynamic canvas sizing
@@ -23,3 +24,10 @@ window.addEventListener("resize", () => {
     Composite.remove(engine.world, getBounds());
     updateBoundaries()
 });
+
+function hideBoundaries() {
+    let objects = getBounds();
+    for (let obj in objects) {
+        objects[obj].render.visible = false;
+    }
+}
