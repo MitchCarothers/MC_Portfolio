@@ -13,14 +13,14 @@ export function addUIFunctionality() {
     physicsTrashButton();
     physicsPauseButton();
     notificationSpawnHint();
-    buttons();
+    uiFactory();
     animations();
 };
 
 import { Modal } from "/script/ui/modals.js";
 import { Button } from "/script/ui/buttons.js";
 
-function buttons() {
+function uiFactory() {
     let resumeModal = new Modal(document.getElementById("modal_resume"))
     new Button(document.getElementById("nav_resume"), () => { resumeModal.show() });
     new Button(document.getElementById("my_resume"), () => { resumeModal.show() });
