@@ -1,4 +1,4 @@
-import { windowWidth, engine, render } from "./physicsEngine.js";
+import { windowWidth, engine, render } from "/script/physics/physicsEngine.js";
 let Bodies = Matter.Bodies;
 let Composite = Matter.Composite;
 

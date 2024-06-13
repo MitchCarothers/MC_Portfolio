@@ -1,5 +1,5 @@
-import { engine } from "/script/physicsEngine.js";
-import { getBounds } from "/script/physicsBoundaries.js";
+import { engine } from "/script/physics/physicsEngine.js";
+import { getBounds } from "/script/physics/physicsBoundaries.js";
 
 export let isPaused = false;
 export function togglePause() {

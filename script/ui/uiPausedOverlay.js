@@ -1,5 +1,5 @@
-import { isPaused } from "/script/physicsPause.js";
-import { render } from "/script/physicsEngine.js";
+import { isPaused } from "/script/physics/physicsPause.js";
+import { render } from "/script/physics/physicsEngine.js";
 
 export function togglePauseOverlay() {
     let filter = "sepia(20%) contrast(110%)"

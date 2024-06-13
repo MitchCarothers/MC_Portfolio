@@ -1,75 +1,139 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-      <link rel="manifest" href="/site.webmanifest">
-      <title>Mitchell Carothers</title>
-      <script src="libraries/matter-js-0.19.0/build/matter.js" defer></script>
-      <script type="module" src="./script/controller.js" defer></script>
-      <link rel="stylesheet" href="/style/main.css">
-    </head>
-    <body>
-        <!-- Modal Container -->
-        <div id="modal_container"></div>
-        <!-- Notification Container -->
-        <div id="notif_container"></div>
-        <!-- Navigation Bar -->
-        <nav class="nav_primary">
-          <div class="nav_title">Mitchell Carothers</div>
-          <div class="nav_buttons_container">
-            <button class="nav_button" id="nav_aboutme">About Me</button>
-            <button class="nav_button" id="nav_resume">Resume</button>
-            <button class="nav_button" id="nav_projects">Projects</button>
-            <button class="nav_button" id="nav_contactme">Contact Me</button>
+  <head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <title>Mitchell Carothers</title>
+    <script src="libraries/matter-js-0.19.0/build/matter.js" defer></script>
+    <script type="module" src="./script/main/main.js" defer></script>
+    <link rel="stylesheet" href="/style/main.css">
+  </head>
+  <body>
+    <!-- Modal Container -->
+    <div id="modal_container">
+      <div class="hidden" id="modal_resume">
+        <div class="modal">
+          <div class="modal_close">
+            <div class="modal_close_icon"></div>
           </div>
-        </nav>
-        <!-- Main -->
-        <main>
-          <!-- Main Page Content Left Column -->
-          <div class="main_content_container main_left" id="main_left">
-            <div class="info_section">
-              <h1>Hey!</h1>
-              <p>I'm Mitchell, a passionate developer and IT enthusiast seeking opportunities to work with a
-                team, developing sustainable long-term business solutions that create change.</p>
-              <div class="page_button_container">
-                <button class="page_button" id="my_resume">View my Resume</button>
+          <div class="modal_download" id="resume_download">
+            <div class="modal_download_icon"></div>
+          </div>
+          <div class="modal_content_container">
+            <img src="/images/resume.png" class="resume border_shadow">
+          </div>
+        </div>
+      </div>
+      <div class="hidden" id="modal_aboutme">
+        <div class="modal">
+          <div class="modal_close">
+            <div class="modal_close_icon"></div>
+          </div>
+          <div class="modal_content_container alignitems_start">
+            <div class="sub_content_container">
+              <div class="info_section">
+                <div class="aboutme_img"></div>
+                <p class="aboutme_name">Mitchell Carothers</p> 
+              </div>
+              <div class="info_section">
+                <h1>About Me</h1>
+                <p class="aboutme_info">
+                  I'm 22 years old, currently residing in Green Bay, Wisconsin.<br>
+                  <br>
+                  I enjoy programming and computer science,<br>
+                  a well designed system is very satisfying to me.<br>
+                </p>
               </div>
             </div>
-            <div class="physics_container" id="physics_container">
-              <div class="physics_start border_shadow" id="physics_start">
-                <div>Click to start simulation!</div>
+          </div>
+        </div>
+      </div>
+      <div class="hidden" id="modal_projects">
+        <div class="modal">
+          <div class="modal_close">
+            <div class="modal_close_icon"></div>
+          </div>
+          <div class="modal_content_container">
+            <div class="sub_content_container">
+              <div class="panel portfolio">
+                <div class="panel_label">Portfolio</div>
               </div>
-              <div class="trash_icon" id="trash"></div>
-              <div class="pause_icon" id="pause"></div>
-              <div id="physics"></div>
+              <div class="panel modals">
+                <div class="panel_label">Modals</div>
+              </div>
             </div>
           </div>
-          <!-- Main Page Content Right Column -->
-          <div class="main_content_container main_right">
-            <div class="profile_image_container">
-              <div class="profile_note" id="profile_note"></div>
-              <div class="profile_image" id="profile_image"></div>
-            </div>
-            <div class="matrix_container">
-              <div class="matrix_cell"><h1 class="matrix_cell_header">My Skills</h1></div>
-              <div class="matrix_cell" id="skill_web">Web Development: HTML, CSS and JavaScript</div>
-              <div class="matrix_cell" id="skill_script">Scripting: Python, Lua, and Batch</div>
-              <div class="matrix_cell" id="skill_sql">SQL Database Management</div>
-              <div class="matrix_cell" id="skill_c">C# Programming</div>
-              <div class="matrix_cell" id="skill_writing">Technical Writing and Documentation</div>
-            </div>
-            <div class="info_section widget_width">
-              <h1 class="text_center">Projects</h1>
-              <div class="page_button_container"><button class="page_button" id="page_projects">View my Projects</button></div>
-            </div>
-            <div class="info_section widget_width">
-              <h1 class="text_center">Contact Me!</h1>
-              <p class="selectable">carothersmitchell@gmail.com</p>
-              <p class="selectable">(920) 241-3485</p>
-            </div>
+        </div>
+      </div>
+      <div class="hidden" id="modal_contactme">
+        <div class="modal">
+          <div class="modal_close">
+            <div class="modal_close_icon"></div>
           </div>
-        </main>
-      </body>
+          <div class="modal_content_container">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Notification Container -->
+    <div id="notification_container"></div>
+    <!-- Navigation Bar -->
+    <nav class="nav_primary">
+      <div class="nav_title">Mitchell Carothers</div>
+      <div class="nav_buttons_container">
+        <button class="nav_button" id="nav_aboutme">About Me</button>
+        <button class="nav_button" id="nav_resume">Resume</button>
+        <button class="nav_button" id="nav_projects">Projects</button>
+        <button class="nav_button" id="nav_contactme">Contact Me</button>
+      </div>
+    </nav>
+    <main>
+      <!-- Main Page Content Left Column -->
+      <div class="main_content_container main_left" id="main_left">
+        <div class="info_section">
+          <h1>Hey!</h1>
+          <p>I'm Mitchell, a passionate developer and IT enthusiast seeking opportunities to work with a team,<br>
+            developing long-term business solutions that create change.</p>
+          <div class="page_button_container">
+            <button class="page_button" id="my_resume">View my Resume</button>
+          </div>
+        </div>
+        <div class="physics_container" id="physics_container">
+          <div class="physics_start border_shadow" id="physics_start">
+            <div>Click to start simulation!</div>
+          </div>
+          <div class="trash_icon" id="trash"></div>
+          <div class="pause_icon" id="pause"></div>
+          <div id="physics"></div>
+        </div>
+      </div>
+      <!-- Main Page Content Right Column -->
+      <div class="main_content_container main_right">
+        <div class="profile_image_container">
+          <div class="profile_note" id="profile_note"></div>
+          <div class="profile_image" id="profile_image"></div>
+        </div>
+        <div class="matrix_container">
+          <div class="matrix_cell"><h1 class="matrix_cell_header">My Skills</h1></div>
+          <div class="matrix_cell" id="skill_web">Web Development: HTML, CSS and JavaScript</div>
+          <div class="matrix_cell" id="skill_script">Scripting: Python, Lua, and Batch</div>
+          <div class="matrix_cell" id="skill_sql">SQL Database Management</div>
+          <div class="matrix_cell" id="skill_c">C# Programming</div>
+          <div class="matrix_cell" id="skill_writing">Technical Writing and Documentation</div>
+        </div>
+        <div class="info_section widget_width">
+          <h1 class="text_center">Projects</h1>
+          <div class="page_button_container"><button class="page_button" id="page_projects">View my Projects</button></div>
+        </div>
+        <div class="info_section widget_width">
+          <h1 class="text_center">Contact Me!</h1>
+          <p class="selectable">carothersmitchell@gmail.com</p>
+          <p class="selectable">(920) 241-3485</p>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>

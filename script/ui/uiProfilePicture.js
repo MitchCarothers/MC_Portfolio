@@ -1,4 +1,4 @@
-export function addProfileImage() {
+export function interactiveProfilePic() {
     const profile_note = document.getElementById("profile_note");
     const profile_image = document.getElementById("profile_image");
 

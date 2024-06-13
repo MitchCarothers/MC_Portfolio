@@ -1,7 +1,7 @@
-import { getRandomInt } from './math.js';
-import { windowWidth, engine } from './physicsEngine.js';
-import { isPaused } from './physicsPause.js';
-import spawnObj from '/json/spawns.json' with { type: 'json' };
+import { getRandomInt } from "/script/utilities/math.js";
+import { windowWidth, engine } from "/script/physics/physicsEngine.js";
+import { isPaused } from "/script/physics/physicsPause.js";
+import spawnObj from "/json/spawns.json" with { type: 'json' };
 let Bodies = Matter.Bodies;
 let Composite = Matter.Composite;
 

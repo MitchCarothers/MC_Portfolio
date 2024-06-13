@@ -1,6 +1,6 @@
-import { toggleRunner } from "./physicsInitialize.js";
+import { toggleRunner } from "/script/physics/physicsInitialize.js";
 
-export function addPhysicsStartScreen() {
+export function physicsStartScreen() {
     let start = document.getElementById("physics_start");
     const container = document.getElementById("physics_container");
     start.addEventListener("click", startSim);

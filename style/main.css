@@ -119,12 +119,52 @@ body {
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(3px);
   display: flex;
   justify-content: center;
   align-items: center;
   opacity: 100%;
   transition: opacity .1s;
+}
+
+.modal {
+  display: flex;
+  position: fixed;
+  right: 10%;
+  left: 10%;
+  top: 3%;
+  bottom: 3%;
+  background: var(--primary_gradient) black no-repeat fixed;
+  padding: 45px 15px 20px;
+  opacity: 100%;
+  transition: opacity .3s;
+  border-radius: 25px;
+  border: 1px solid rgb(177, 177, 177);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
+}
+
+.modal_content_container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+.modal_content_container::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 10px;
+  outline: 1px solid white;
+}
+
+.modal_content_container::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+}
+
+.modal_content_container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(63, 63, 63, 0.8);
 }
 
 .modal_close {
@@ -173,54 +213,10 @@ body {
   opacity: 60%;
 }
 
-/* iFrames */
-.frame_container{
-  display: flex;
-  position: fixed;
-  right: 10%;
-  left: 10%;
-  top: 3%;
-  bottom: 3%;
-  background: var(--primary_gradient) black no-repeat fixed;
-  padding: 45px 15px 20px;
-  opacity: 100%;
-  transition: opacity .3s;
-  border-radius: 25px;
-  border: 1px solid rgb(177, 177, 177);
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
-}
-
-.frame {
-  z-index: 600;
-  flex: 1;
-  border: none;
-}
-
-.frame_body {
-  background: transparent;
-}
-
-.frame_body::-webkit-scrollbar {
-  width: 10px;
-  border-radius: 10px;
-  outline: 1px solid white;
-}
-
-.frame_body::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
-  background-color: rgb(255, 255, 255);
-  border-radius: 10px;
-}
-
-.frame_body::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color: rgba(63, 63, 63, 0.8);
-}
-
 /* Resume Page */
 .resume {
-  width: 80%;
   margin-bottom: 20px;
+  min-height: 130vh;
 }
 
 /* About Me Page */
@@ -241,32 +237,16 @@ body {
   border-radius: 50px;
   width: 300px;
   height: 300px;
+  margin-bottom: 40px;
 }
 
 /* Projects Page */
-.projects_portfolio {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.portfolio {
   background: no-repeat 80% 0%/170% url("/images/portfolio.PNG");
-  width: 300px;
-  height: 400px;
-  border-radius: 25px;
-  border: 1px solid rgb(177, 177, 177);
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
 }
 
-.projects_portfolio_label {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 25px;
-  width: 100%;
-  height: 100%;
-  font: 200 32px Roboto;
-  clip-path: inset(0px 0px 100% 0px);
-  transition: clip-path .5s;
+.modals {
+  background: no-repeat 80% 0%/170% url("/images/portfolio.PNG");
 }
 
 /* Physics Simulation */
@@ -345,6 +325,31 @@ canvas {
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.5) inset;
 }
 
+/* Panels */
+.panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 400px;
+  border-radius: 25px;
+  border: 1px solid rgb(177, 177, 177);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
+}
+
+.panel_label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(255, 255, 255, .8);
+  border-radius: 25px;
+  width: 100%;
+  height: 100%;
+  font: 200 32px Roboto;
+  clip-path: inset(0px 0px 100% 0px);
+  transition: clip-path .5s;
+}
+
 /* Main Page Content Styles */
 main {
   display: flex;
@@ -395,6 +400,10 @@ p {
 
 .alignitems_center {
   align-items: center;
+}
+
+.alignitems_start {
+  align-items: start;
 }
 
 .profile_image_container {

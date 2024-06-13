@@ -1,9 +1,9 @@
-import { notification } from "./uiNotification.js";
-import { hasUserSpawnedObject } from "./uiPhysicsSpawnButtons.js";
+import { notification } from "/script/ui/uiNotification.js";
+import { hasUserSpawnedObject } from "/script/ui/uiPhysicsSpawnButtons.js";
 
 let physicsStart;
 let notificationDelay = 5000;
-export function addNotificationSpawnHint() {
+export function notificationSpawnHint() {
     physicsStart = document.getElementById("physics_start");
     physicsStart.addEventListener("click", setNotificationTimer);
 };

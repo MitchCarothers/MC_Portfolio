@@ -1,4 +1,4 @@
-import { runner } from "/script/physicsEngine.js";
+import { runner } from "/script/physics/physicsEngine.js";
 
 let isRunning;
 export function initializeSim() {

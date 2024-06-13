@@ -1,8 +1,8 @@
-import { togglePause, isPaused } from "/script/physicsPause.js";
-import { togglePauseOverlay } from "./uiPausedOverlay.js";
+import { togglePause, isPaused } from "/script/physics/physicsPause.js";
+import { togglePauseOverlay } from "/script/ui/uiPausedOverlay.js";
 
 let button;
-export function addPhysicsPauseButton() {
+export function physicsPauseButton() {
     button = document.getElementById("pause");
     button.addEventListener("click", togglePauseButton);
 };

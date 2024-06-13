@@ -1,8 +1,8 @@
-import { quickSpawn } from "./physicsSpawn.js";
+import { quickSpawn } from "/script/physics/physicsSpawn.js";
 
 let buttons;
 export let hasUserSpawnedObject;
-export function addSpawnButtons() {
+export function spawnButtons() {
     buttons = getButtons();
     for (let button in buttons) {
         buttons[button].addEventListener("click", (event) => {

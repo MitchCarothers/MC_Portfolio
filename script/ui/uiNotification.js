@@ -1,4 +1,4 @@
-import { newElement, newTextNode } from "./elementAssembly.js";
+import { newElement, newTextNode } from "/script/utilities/elementAssembly.js";
 
 export class notification {
     timeout = 8000;

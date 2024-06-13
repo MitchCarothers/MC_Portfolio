@@ -1,6 +1,6 @@
-import { render, engine } from './physicsEngine.js';
-import { isPaused } from './physicsPause.js';
-import { getBounds } from '/script/physicsBoundaries.js';
+import { render, engine } from "/script/physics/physicsEngine.js";
+import { isPaused } from "/script/physics/physicsPause.js";
+import { getBounds } from "/script/physics/physicsBoundaries.js";
 let Mouse = Matter.Mouse;
 let MouseConstraint = Matter.MouseConstraint;
 let Composite = Matter.Composite;
