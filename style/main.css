@@ -40,7 +40,7 @@ body {
   font: 300 26px Roboto;
   transition: letter-spacing .3s;
   letter-spacing: 2px;
-  width: 340px;
+  min-width: 270px;
   text-align: left;
   margin-left: 50px;
 }
@@ -54,6 +54,7 @@ body {
   align-items: center;
   justify-content: center;
   flex: .7;
+  min-width: 700px;
 }
 
 .nav_button {
@@ -250,7 +251,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 440px;
+  height: 480px;
+  width: 480px;
   position: relative;
 }
 
@@ -558,7 +560,8 @@ p {
 }
 
 .widget_width {
-  width: 260px;
+  min-width: 260px;
+  width: 360px;
 }
 
 .selectable {
@@ -566,8 +569,38 @@ p {
   -webkit-user-select: text;
 }
 
-@media screen and (max-width: 1100px) {
+div#widgets_container.sub_content_container {
+  flex-direction: row;
+  gap: 100px;
+  margin-top: 60px;
+}
+
+div#secondary_matrix.matrix_container {
+  display: none;
+}
+
+@media screen and (max-width: 1150px) {
   .sub_content_container {
     flex-direction: column;
+    gap: 0;
+  }
+  div#widgets_container.sub_content_container {
+    flex-direction: row;
+    gap: 0px;
+  }
+  div#secondary_matrix.matrix_container {
+    display: flex;
+    margin-top: 0;
+  }
+  div#primary_matrix.matrix_container {
+    display: none;
+  }
+  .widget_width {
+    width: 100px;
+    margin-top: 0;
+  }
+  div#secondary_widgets_container.sub_content_container {
+    display: column;
+    width: fit-content;
   }
 }
